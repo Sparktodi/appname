@@ -14,23 +14,51 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-      <ul class="navbar-nav  ms-auto mb-0 mb-lg-2">
 
-
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <%= link_to "All questions", questions_path, class: "nav-link active" %>
           </li>
+        </ul>
+
+      <ul class="navbar-nav  ms-auto mb-0 mb-lg-2">
+        <% if user_signed_in? %>
 
           <li class="nav-item">
             <%= link_to "New question" , new_question_path, class: "nav-link active" %>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user.email %>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li> 
+                <%= link_to "My profile", my_profile_path, class: "dropdown-item" %>
+              </li>
+
+              <li>
+                  <%= link_to "Edit registration", edit_user_registration_path, class: "dropdown-item" %> 
+              </li>
+
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
+              </li>
+            </ul>
           </li>
+
+        <% else %>
+
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <%= link_to "Log in", new_user_session_path, class: "nav-link active" %>
           </li>
+
+          <li class="nav-item">
+            <%= link_to "Sing up", new_user_registration_path, class: "nav-link active" %>
+          </li>
+
+        <% end %>
         </ul>
       </div>
     </div>

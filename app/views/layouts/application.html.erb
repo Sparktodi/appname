@@ -14,7 +14,14 @@
   <body>
     <%= render 'shared/header' %>
     <main class="container mt-3">
-      <%= render 'shared/flash' %>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+        <% else %>
+        <%= render 'shared/flash' %>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </main>
   </body>
