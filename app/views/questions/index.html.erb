@@ -5,6 +5,11 @@
 
 <% @questions.each do |question| %>
   <article class="card">
+    <section class="card-header">
+      <%= gravatar_for question.user %>
+      <%= question.user.email %>
+    </section>
+
     <div class="card-body">
       <h2><%= question.title %></h2>
 
@@ -23,5 +28,6 @@
     <%= link_to t('btn.delete'), question_path(question), class: 'btn btn-danger', data: {method: :delete, confirm: 'Are you sure?'} %>
     </div>
   </article>
+  <br />
 <% end %>
 <%= paginate @questions %>

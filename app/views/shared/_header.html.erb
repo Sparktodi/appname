@@ -51,6 +51,7 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= gravatar_for current_user %>
               <%= current_user.email %>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
