@@ -1,37 +1,35 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
-before_action :set_question!
-before_action :set_answer!, except: :create
+  before_action :set_question!
+  before_action :set_answer!, except: :create
 
   def update
     if @answer.update answer_params
-      flash[:success] = "Answer update"
+      flash[:success] = I18n.t 'Answer update'
       redirect_to question_path(@question)
     else
       render :edit
     end
   end
 
-  def edit
-  end
-
-  
-
+  def edit; end
 
   def create
     @answer = @question.answers.build answer_params
 
     if @answer.save
-      flash[:success] = "Answer created!"
+      flash[:success] = I18n.t 'Answer created!'
       redirect_to question_path(@question)
     else
-      @answers = @question.answers.order(created_at: :desc)
+      @answers = @question.answers.order(created_at: :desc).page params[:page]
       render 'questions/show'
     end
   end
 
   def destroy
     @answer.destroy
-    flash[:success] = "Answer delete"
+    flash[:success] = I18n.t 'Answer delete'
     redirect_to question_path(@question)
   end
 

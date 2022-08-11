@@ -1,0 +1,64 @@
+ru:
+  en: "Английсский"
+  ru: "Русский"
+  activerecord:
+    models:
+      question: "Вопрос"
+      answer: "Вопрос"
+    attributes:
+      question: 
+        title: "Заголовок"
+        body: "Текст"
+      answer:
+        body: "Текст"
+
+  home:
+    home:
+      menu: "Главная"
+      title_login: "Добро пожаловать"
+      title: "Чтобы задать вопрос, вам необходимо зарегистрироваться и авторизоваться"
+
+  views:
+    pagination:
+      first: "&laquo; Первая страница"
+      last: "Последняя страница; &raquo;"
+      previous: "&lsaquo; Предыдущая страница"
+      next: "Следующая страница &rsaquo;"
+      truncate: "&hellip;"
+
+  head:
+    all_questions: "Все вопросы"
+    new_question: "Задать вопрос"
+    my_profile: "Мой профиль"
+    edit_registration: "Редактировать"
+    sign_out: "Выйти"
+    log_in: "Войти"
+    sign_up: "Регистрация"
+
+  time:
+    am: "утра"
+    format:
+      long: "%d %B %Y, %H:%M"
+    pm: "вечера"
+
+  question:
+    destroy: "Вопрос удален"
+    update: "Вопрос обновлен"
+    create: "Вопрос создан"
+
+  answer:
+    destroy: "Ответ удален"
+    update: "Ответ обновлен"
+    create: "Ответ создан"
+
+  btn:
+    submit: "Отправить"
+    show: "Показать"
+    edit: "Редактировать"
+    delete: "Удалить"
+
+  
+
+
+
+

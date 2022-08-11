@@ -1,6 +1,8 @@
+<% provide :page_title, t('home.home.menu') %>
+
 <% if user_signed_in? %>
-  <h1 class="text-center m-5">Welcome </h1>
+  <h1 class="text-center m-5"><%= t('home.home.title_login') %></h1>
 <% else %>
-  <h1 class="text-center m-5">To ask a question you need to register and log in.</h1>
+  <h1 class="text-center m-5"><%= t('home.home.title') %></h1>
 <% end %>
 
