@@ -49,6 +49,11 @@
             <%= link_to t('head.new_question') , new_question_path, class: "nav-link active" %>
           </li>
 
+          <% if policy([:admin, :user]).index? %>
+            <li><%= link_to "Admin meny", admin_users_path,
+              class: 'nav-link px-2' %></li>
+          <% end %>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= gravatar_for current_user %>

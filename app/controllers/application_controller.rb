@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include ErrorHandling
+  include Authorization
 
   around_action :switch_locale
 

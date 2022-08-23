@@ -15,9 +15,13 @@
 <p class="lead my-3">
   <%= @question.body %>
 </p>
+<% if policy(@question).edit? %>
+  <%= link_to t('btn.edit'), edit_question_path(@question), class: 'btn btn-secondary' %>
+<% end %>
 
-<%= link_to t('btn.edit'), edit_question_path(@question), class: 'btn btn-secondary' %>
-<%= link_to t('btn.delete'), question_path(@question), class: 'btn btn-danger', data: {method: :delete, confirm: 'Are you sure?'} %>
+<% if policy(@question).destroy? %>
+  <%= link_to t('btn.delete'), question_path(@question), class: 'btn btn-danger', data: {method: :delete, confirm: 'Are you sure?'} %>
+<% end %>
 
 <h2 class="mt-5">Answers</h2>
 <%= paginate @answers  %>
@@ -39,9 +43,13 @@
           <%= answer.body %>
         </p>
       </section>
+      <% if policy(answer).destroy? %>
+        <%= link_to t('btn.delete'), question_answer_path(@question, answer), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: 'Are you sure?'} %>
+      <% end %>
 
-      <%= link_to t('btn.delete'), question_answer_path(@question, answer), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: 'Are you sure?'} %>
-      <%= link_to t('btn.edit'), edit_question_answer_path(@question, answer), class: 'btn btn-info btn-sm' %>
+      <% if policy(answer).edit? %> 
+        <%= link_to t('btn.edit'), edit_question_answer_path(@question, answer), class: 'btn btn-info btn-sm' %>
+      <% end %>
     </div>
   </article>
 <% end %>
