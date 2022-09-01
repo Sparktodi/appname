@@ -12,13 +12,13 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    flash[:success] = t ('question.destroy')
+    flash[:success] = t('question.destroy')
     redirect_to questions_path
   end
 
   def update
     if @question.update question_params
-      flash[:success] = t ('question.update')
+      flash[:success] = t('question.update')
       redirect_to question_path
     else
       render :new
@@ -28,7 +28,8 @@ class QuestionsController < ApplicationController
   def edit; end
 
   def index
-    @questions = Question.order(created_at: :desc).page params[:page]
+    @q = Question.order(created_at: :desc).ransack(params[:q])
+    @questions = @q.result(distinct: true).page params[:page]
   end
 
   def new
@@ -38,7 +39,7 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.build question_params
     if @question.save
-      flash[:success] = t ('question.create')
+      flash[:success] = t('question.create')
       redirect_to questions_path
     else
       render :new
@@ -48,14 +49,12 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, :photo, :photo_cache, :remove_photo)
   end
 
   def set_question!
     @question = Question.find params[:id]
   end
-
-
 
   def authorize_question!
     authorize(@question || Question)

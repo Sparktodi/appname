@@ -9,8 +9,11 @@ ru:
       question: 
         title: "Заголовок"
         body: "Текст"
+        photo: "Картинка"
       answer:
         body: "Текст"
+      user:
+        role: "Роль"
 
   home:
     home:
@@ -34,6 +37,8 @@ ru:
     sign_out: "Выйти"
     log_in: "Войти"
     sign_up: "Регистрация"
+    home: "Главная страница"
+    admin_menu: "Страница админа"
 
   time:
     am: "утра"
@@ -45,17 +50,51 @@ ru:
     destroy: "Вопрос удален"
     update: "Вопрос обновлен"
     create: "Вопрос создан"
+    head: "Вопросы"
+    search_form: 'Найти вопросы'
+    search: 'Поиск'
+    edit: 'Редактировать вопрос'
+    que: 'Вопрос'
+    new: "Новый вопрос"
 
   answer:
     destroy: "Ответ удален"
     update: "Ответ обновлен"
     create: "Ответ создан"
+    head: "Вопросы"
+    write_answer: "Напишите свой ответ"
+    edit_answer: "Редактировать ответ"
 
   btn:
     submit: "Отправить"
     show: "Показать"
     edit: "Редактировать"
     delete: "Удалить"
+
+  global:
+    dialog:
+      you_sure: "Вы уверены?"
+
+  admin:
+    page: "Стринаца админа"
+    email: "Эл. адрес"
+    role: "Роль"
+    create: "Создан"
+    edit: "Редактировать пользователя"
+    update: "Обновить"
+    destroy: "Показать удален"
+
+
+  errors:
+      messages:
+        carrierwave_processing_error: "Невозможно изменить размер изображения."
+        carrierwave_integrity_error: "Не изображение."
+        carrierwave_download_error: "Не удалось загрузить изображение."
+        extension_whitelist_error: "Вам не разрешено загружать %{extension} файлы, allowed types: %{allowed_types}"
+        extension_blacklist_error: "Вам не разрешено загружать %{extension} файлы, prohibited types: %{prohibited_types}"
+
+  authorization:
+    error: "Войдите в аккаунт пожалуйста"
 
   
 

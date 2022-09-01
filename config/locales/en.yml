@@ -1,4 +1,12 @@
 en:
+  errors:
+      messages:
+        carrierwave_processing_error: "Cannot resize image."
+        carrierwave_integrity_error: "Not an image."
+        carrierwave_download_error: "Couldn't download image."
+        extension_whitelist_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
+        extension_blacklist_error: "You are not allowed to upload %{extension} files, prohibited types: %{prohibited_types}"
+
   en: "English"
   ru: "Russian"
   activerecord:
@@ -9,8 +17,11 @@ en:
       question: 
         title: "Title"
         body: "Body"
+        photo: "Image"
       answer:
         body: "Body"
+      user:
+        role: "Role"
 
   views:
     pagination:
@@ -34,22 +45,50 @@ en:
     sign_out: "Sign out"
     log_in: "Log in"
     sign_up: "Sign_up"
+    home: "Home"
+    admin_menu: "Admin menu"
 
   question:
     destroy: "Question delete"
     update: "Question update"
     create: "Question create"
+    head: "Questions"
+    search_form: 'Search questions'
+    search: 'Search'
+    edit: 'Edit question'
+    que: 'Question'
+    new: "New question"
 
   answer:
     destroy: "Answer delete"
     update: "Answer update"
     create: "Answer create"
+    head: "Answers"
+    write_answer: "Write your answer"
+    edit_answer: "Edit answer"
 
   btn:
     submit: "Submit"
     show: "Swoh"
     edit: "Edit"
     delete: "Delete"
+
+  global:
+    dialog:
+      you_sure: "Are you sure?"
+
+  admin:
+    page: "Admin page"
+    email: "Email"
+    role: "Role"
+    create: "Create"
+    edit: "Edit User"
+    update: "Update"
+    destroy: "User destroy"
+
+  authorization:
+    error: "Log in pleasess"
+
 
 
 

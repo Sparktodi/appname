@@ -1,0 +1,8 @@
+<%= search_form_for @q do |f| %>
+
+  <div class="col col-form-label">
+    <%= f.search_field :title_or_body_cont, placeholder: t('question.search_form') %>
+
+    <%= f.submit t('question.search') ,class: 'btn btn-primary btn-sm' %>
+  </div>
+<% end %>

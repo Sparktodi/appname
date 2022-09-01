@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Authorization
   extend ActiveSupport::Concern
@@ -10,7 +11,7 @@ module Authorization
     private
 
     def user_not_authorized
-      flash[:danger] = "Log in pleasess"
+      flash[:danger] = t('authorization.error')
       redirect_to(request.referer || root_path)
     end
   end

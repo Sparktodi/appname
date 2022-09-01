@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AnswerPolicy < ApplicationPolicy
-  def index? 
+  def index?
     true
   end
 
@@ -18,4 +20,4 @@ class AnswerPolicy < ApplicationPolicy
   def show?
     true
   end
-end 
+end

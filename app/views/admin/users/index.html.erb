@@ -1,14 +1,14 @@
- <% provide :page_title, 'Admin Users' %>
+ <% provide :page_title, t('admin.page') %>
 
-<h1 class="mb-4">Admin Users</h1>
+<h1 class="mb-4"><%= t('admin.page') %></h1>
 <%= paginate @users %>
 <table class="table table-stred table-hover">
   <thead>
      <tr>
        <th scope="col">#</th>
-       <th scope="col">Email</th>
-       <th scope="col">Role</th>
-       <th scope="col">Created at</th>
+       <th scope="col"><%= t('admin.email') %></th>
+       <th scope="col"><%= t('admin.role') %></th>
+       <th scope="col"><%= t('admin.create') %></th>
      </tr>
   </thead>
   <tbody>

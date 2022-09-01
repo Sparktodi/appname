@@ -1,5 +1,5 @@
-<% provide :page_title, 'Edit users' %>
+<% provide :page_title, t('admin.edit') %>
 
-<h1 class="mb-4">Edit user</h1>
+<h1 class="mb-4"><%= t('admin.edit') %></h1>
 
 <%= render 'form', user: @user %>

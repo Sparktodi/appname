@@ -1,4 +1,4 @@
-<% provide :page_title, 'Question' %>
+<% provide :page_title, t('question.que') %>
 
 <div class="mb-3">
   <%= gravatar_for @question.user %>
@@ -15,15 +15,20 @@
 <p class="lead my-3">
   <%= @question.body %>
 </p>
+
+<p class="lead my-3">
+  <%= link_to(image_tag(@question.photo.thumb.url, alt: 'Photo'), @question.photo.url, target: '_blank') if @question.photo? %>
+</p>
+
 <% if policy(@question).edit? %>
   <%= link_to t('btn.edit'), edit_question_path(@question), class: 'btn btn-secondary' %>
 <% end %>
 
 <% if policy(@question).destroy? %>
-  <%= link_to t('btn.delete'), question_path(@question), class: 'btn btn-danger', data: {method: :delete, confirm: 'Are you sure?'} %>
+  <%= link_to t('btn.delete'), question_path(@question), class: 'btn btn-danger', data: {method: :delete, confirm: t('global.dialog.you_sure')} %>
 <% end %>
 
-<h2 class="mt-5">Answers</h2>
+<h2 class="mt-5"><%= t('answer.head') %></h2>
 <%= paginate @answers  %>
 
 <% @answers.each do |answer| %>
@@ -44,7 +49,7 @@
         </p>
       </section>
       <% if policy(answer).destroy? %>
-        <%= link_to t('btn.delete'), question_answer_path(@question, answer), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: 'Are you sure?'} %>
+        <%= link_to t('btn.delete'), question_answer_path(@question, answer), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: t('global.dialog.you_sure')} %>
       <% end %>
 
       <% if policy(answer).edit? %> 
@@ -58,6 +63,6 @@
 
 <hr class="my-3">
 
-<h2>Write your answer</h2>
+<h2><%= t('answer.write_answer') %></h2>
 
 <%= render 'answers/form_answers' %>

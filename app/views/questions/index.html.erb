@@ -1,6 +1,11 @@
- <% provide :page_title, 'All questions' %>
+ <% provide :page_title, t('question.head') %>
 
-<h1 class="mb-4">Questions</h1>
+
+
+<h1 class="mb-4"><%= t('question.head')%></h1>
+
+<%= render 'search_form' %>
+<br />
 <%= paginate @questions %>
 
 <% @questions.each do |question| %>
@@ -28,7 +33,7 @@
       <%= link_to t('btn.edit'), edit_question_path(question), class: 'btn btn-secondary' %>
     <% end %>
     <% if policy(question).destroy? %>
-      <%= link_to t('btn.delete'), question_path(question), class: 'btn btn-danger', data: {method: :delete, confirm: 'Are you sure?'} %>
+      <%= link_to t('btn.delete'), question_path(question), class: 'btn btn-danger', data: {method: :delete, confirm: t('global.dialog.you_sure')} %>
     <% end %>
     </div>
   </article>
