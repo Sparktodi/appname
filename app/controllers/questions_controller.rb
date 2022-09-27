@@ -13,7 +13,11 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     flash[:success] = t('question.destroy')
-    redirect_to questions_path
+    if current_user.role == 'admin'
+      redirect_to admin_questions_path
+    else
+      redirect_to my_profile_path
+    end
   end
 
   def update
@@ -28,7 +32,7 @@ class QuestionsController < ApplicationController
   def edit; end
 
   def index
-    @q = Question.order(created_at: :desc).ransack(params[:q])
+    @q = Question.where(aasm_state: 'active').or(Question.where(aasm_state: 'complet')).order(created_at: :desc).ransack(params[:q])
     @questions = @q.result(distinct: true).page params[:page]
   end
 
@@ -40,7 +44,7 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build question_params
     if @question.save
       flash[:success] = t('question.create')
-      redirect_to questions_path
+      redirect_to my_profile_path
     else
       render :new
     end

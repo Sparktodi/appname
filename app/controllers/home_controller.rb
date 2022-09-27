@@ -3,5 +3,7 @@
 class HomeController < ApplicationController
   def home; end
 
-  def profile; end
+  def profile
+    @questions = current_user.questions.order(updated_at: :desc).page params[:page]
+  end
 end

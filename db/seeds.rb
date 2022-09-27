@@ -16,14 +16,33 @@
 #  Question.create([{
 #  title: Faker::Lorem.sentence,
 #  body: Faker::Lorem.paragraph(sentence_count: rand(2..20)),
-#  user_id: rand(3..33)
+#  user_id: rand(1..31),
+#  aasm_state: 'no_active'
 #   }])
 # end
 
-# 500.times do
+# 100.times do
+#  Question.create([{
+#  title: Faker::Lorem.sentence,
+#  body: Faker::Lorem.paragraph(sentence_count: rand(2..20)),
+#  user_id: rand(1..31),
+#  aasm_state: 'active'
+#   }])
+# end
+
+# 100.times do
+#  Question.create([{
+#  title: Faker::Lorem.sentence,
+#  body: Faker::Lorem.paragraph(sentence_count: rand(2..20)),
+#  user_id: rand(1..31),
+#  aasm_state: 'complet'
+#   }])
+# end
+
+# 800.times do
 #  Answer.create([{
 #    body: Faker::Lorem.paragraph(sentence_count: rand(2..20)),
-#    user_id: rand(3..33),
-#    question_id: rand(1..100)
+#    user_id: rand(1..31),
+#    question_id: rand(1..300)
 #  }])
 # end

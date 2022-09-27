@@ -1,0 +1,50 @@
+ <% provide :page_title, t('home.profile') %>
+
+<h1 class="mb-4"><%= t('home.profile')%></h1>
+<%= paginate @questions %>
+
+<% @questions.each do |question| %>
+  <article class="card">
+    
+    <% if question.aasm_state == "no_active" %>
+      <section class="card-header" style="background-color: #adb5bd;">
+    <% elsif question.aasm_state == "active" %>
+      <section class="card-header" style="background-color: #0d6efd;">
+    <% else %>
+      <section class="card-header" style="background-color: #20c997;">
+    <% end %>
+
+      <%= gravatar_for question.user %>
+      <%= question.user.email %>
+      <h4>Status: <%= question.aasm_state %></h3>
+    </section>
+
+    <div class="card-body">
+      <h2><%= question.title %></h2>
+
+      <section class="card-text">
+        <time datetime="<%= question.created_at %>">
+          <small><%= l question.created_at, :format => :long %></small>
+        </time>
+
+        <p>
+          <%= question.body %>
+        </p>
+
+        <p class="lead my-3">
+          <%= link_to(image_tag(question.photo.thumb.url, alt: 'Photo'), question.photo.url, target: '_blank') if question.photo? %>
+        </p>
+      </section>
+
+    <% if question.aasm_state == "active" || question.aasm_state == "complet" %>
+      <%= link_to t('btn.show'), question_path(question), class: 'btn btn-primary' %>
+    <% end %>
+    <% if question.aasm_state == "no_active" %>
+      <%= link_to t('btn.edit'), edit_question_path(question), class: 'btn btn-secondary' %>
+    <% end %>
+    <%= link_to t('btn.delete'), question_path(question), class: 'btn btn-danger', data: {method: :delete, confirm: t('global.dialog.you_sure')} %>
+    </div>
+  </article>
+  <br />
+<% end %>
+<%= paginate @questions %>

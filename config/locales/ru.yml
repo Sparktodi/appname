@@ -20,6 +20,7 @@ ru:
       menu: "Главная"
       title_login: "Добро пожаловать"
       title: "Чтобы задать вопрос, вам необходимо зарегистрироваться и авторизоваться"
+    profile: "Мои вопросы"
 
   views:
     pagination:
@@ -49,7 +50,7 @@ ru:
   question:
     destroy: "Вопрос удален"
     update: "Вопрос обновлен"
-    create: "Вопрос создан"
+    create: "Вопрос создан, он появится в вкладке 'все вопросы'как только его одобрит администрация "
     head: "Вопросы"
     search_form: 'Найти вопросы'
     search: 'Поиск'
@@ -70,6 +71,8 @@ ru:
     show: "Показать"
     edit: "Редактировать"
     delete: "Удалить"
+    start: "Активировать"
+    completed: "Завершенный"
 
   global:
     dialog:
@@ -82,7 +85,11 @@ ru:
     create: "Создан"
     edit: "Редактировать пользователя"
     update: "Обновить"
-    destroy: "Показать удален"
+    destroy: "пользователь удален"
+    question: "Вопрос"
+    author: "Автор"
+    status: "Статус"
+    change_status: "Изменить статус"
 
 
   errors:
@@ -94,7 +101,7 @@ ru:
         extension_blacklist_error: "Вам не разрешено загружать %{extension} файлы, prohibited types: %{prohibited_types}"
 
   authorization:
-    error: "Войдите в аккаунт пожалуйста"
+    error: "У вас нет на это право"
 
   
 

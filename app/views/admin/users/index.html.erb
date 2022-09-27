@@ -1,7 +1,10 @@
  <% provide :page_title, t('admin.page') %>
 
 <h1 class="mb-4"><%= t('admin.page') %></h1>
-<%= paginate @users %>
+<h2 class="mb-4">
+  <%= link_to t('question.head'), admin_questions_path, class: 'btn btn-secondary' %>
+</h2>
+<%= paginate @users %> 
 <table class="table table-stred table-hover">
   <thead>
      <tr>

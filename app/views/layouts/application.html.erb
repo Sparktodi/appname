@@ -16,11 +16,10 @@
     <main class="container mt-3">
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
+      <% elsif alert %>
+        <p class="alert alert-danger"><%= alert %></p>
       <% else %>
         <%= render 'shared/flash' %>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
       <% end %>
       <%= yield %>
     </main>

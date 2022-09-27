@@ -1,0 +1,16 @@
+<% provide :page_title, t('admin.page') %>
+<%= paginate @questions %>
+<table class="table table-stred table-hover">
+  <thead>
+     <tr>
+       <th scope="col"><%= t('admin.question')%></th>
+       <th scope="col"><%= t('admin.author')%></th>
+       <th scope="col"><%= t('admin.status')%></th>
+       <th scope="col"><%= t('admin.change_status')%></th>
+     </tr>
+  </thead>
+  <tbody>
+     <%=render @questions%>
+  </tbody>
+</table>
+<%= paginate @questions %>

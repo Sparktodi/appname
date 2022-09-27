@@ -36,6 +36,7 @@ en:
       menu: "Home"
       title_login: "Welcome"
       title: "To ask a question you need to register and log in"
+    profile: "My questions"
 
   head:
     all_questions: "All questions"
@@ -51,7 +52,7 @@ en:
   question:
     destroy: "Question delete"
     update: "Question update"
-    create: "Question create"
+    create: "The question has been created, it will appear in the tab 'all questions' as soon as it is approved by the administration"
     head: "Questions"
     search_form: 'Search questions'
     search: 'Search'
@@ -72,6 +73,8 @@ en:
     show: "Swoh"
     edit: "Edit"
     delete: "Delete"
+    start: "Activate"
+    completed: "Completed"
 
   global:
     dialog:
@@ -85,9 +88,13 @@ en:
     edit: "Edit User"
     update: "Update"
     destroy: "User destroy"
+    question: "Question"
+    author: "Author"
+    status: "Status"
+    change_status: "Change status"
 
   authorization:
-    error: "Log in pleasess"
+    error: "You don't have the right to"
 
 
 

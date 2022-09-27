@@ -1,0 +1,13 @@
+<tr>
+  <td><%= question.title %></td>
+  <td><%= question.user.email %></td>
+  <td><%= question.aasm_state %></td>
+  <td>
+      <%= link_to t('btn.start'), start_admin_question_path(question) , method: :put %>
+      <br />
+      <%= link_to t('btn.completed'), finish_admin_question_path(question), method: :put %>
+  </td>
+  <td><%= link_to t('btn.show'), question_path(question), class: 'btn btn-primary' %></td>
+  <td><%= link_to t('btn.edit'), edit_question_path(question), class: 'btn btn-secondary' %></td>
+  <td><%= link_to t('btn.delete'), question_path(question), class: 'btn btn-danger', data: {method: :delete, confirm: t('global.dialog.you_sure')} %></td>
+</tr>

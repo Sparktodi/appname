@@ -20,49 +20,43 @@
   <%= link_to(image_tag(@question.photo.thumb.url, alt: 'Photo'), @question.photo.url, target: '_blank') if @question.photo? %>
 </p>
 
-<% if policy(@question).edit? %>
-  <%= link_to t('btn.edit'), edit_question_path(@question), class: 'btn btn-secondary' %>
+<% unless @question.aasm_state == "no_active" %>
+  <h2 class="mt-5"><%= t('answer.head') %></h2>
+  <%= paginate @answers  %>
+
+  <% @answers.each do |answer| %>
+    <article class="mb-3 card">
+      <div class="card-body">
+        <section class="card-text">
+          <div class="mb-3">
+            <%= gravatar_for answer.user %>
+            <%= answer.user.email %>
+          </div>
+
+          <time datetime="<%= answer.created_at %>">
+            <%= l answer.created_at, :format => :long %>
+          </time>
+
+          <p class="mt-2 mb-3">
+            <%= answer.body %>
+          </p>
+        </section>
+        <% if policy(answer).destroy? %>
+          <%= link_to t('btn.delete'), question_answer_path(@question, answer), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: t('global.dialog.you_sure')} %>
+        <% end %>
+
+        <% if policy(answer).edit? %> 
+          <%= link_to t('btn.edit'), edit_question_answer_path(@question, answer), class: 'btn btn-info btn-sm' %>
+        <% end %>
+      </div>
+    </article>
+  <% end %>
+
+  <%= paginate @answers %>
+
+  <hr class="my-3">
+
+  <h2><%= t('answer.write_answer') %></h2>
+
+  <%= render 'answers/form_answers' %>
 <% end %>
-
-<% if policy(@question).destroy? %>
-  <%= link_to t('btn.delete'), question_path(@question), class: 'btn btn-danger', data: {method: :delete, confirm: t('global.dialog.you_sure')} %>
-<% end %>
-
-<h2 class="mt-5"><%= t('answer.head') %></h2>
-<%= paginate @answers  %>
-
-<% @answers.each do |answer| %>
-  <article class="mb-3 card">
-    <div class="card-body">
-      <section class="card-text">
-        <div class="mb-3">
-          <%= gravatar_for answer.user %>
-          <%= answer.user.email %>
-        </div>
-
-        <time datetime="<%= answer.created_at %>">
-          <%= l answer.created_at, :format => :long %>
-        </time>
-
-        <p class="mt-2 mb-3">
-          <%= answer.body %>
-        </p>
-      </section>
-      <% if policy(answer).destroy? %>
-        <%= link_to t('btn.delete'), question_answer_path(@question, answer), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: t('global.dialog.you_sure')} %>
-      <% end %>
-
-      <% if policy(answer).edit? %> 
-        <%= link_to t('btn.edit'), edit_question_answer_path(@question, answer), class: 'btn btn-info btn-sm' %>
-      <% end %>
-    </div>
-  </article>
-<% end %>
-
-<%= paginate @answers %>
-
-<hr class="my-3">
-
-<h2><%= t('answer.write_answer') %></h2>
-
-<%= render 'answers/form_answers' %>
